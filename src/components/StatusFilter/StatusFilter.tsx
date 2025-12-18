@@ -1,11 +1,12 @@
+import Button from "../Button/Button";
 import css from "./StatusFilter.module.css";
 
 export default function StatusFilter() {
     return (
       <div className={css.wrapper}>
-        <button>All</button>
-        <button>Active</button>
-        <button>Complited</button>
+            <Button>All</Button>
+            <Button>Active</Button>
+            <Button>Complited</Button>
       </div>
     );
 }
