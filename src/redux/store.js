@@ -9,14 +9,13 @@ const initialState = {
       { id: 3, text: "Discover Redux", completed: false },
       { id: 4, text: "Build amazing apps", completed: false },
     ],
-    },
-    filters: {
-        status: "all"
-    }
+  },
+  filters: {
+    status: "all",
+  },
 };
 
-
-const rootReducer = (state=initialState, action) => {
+const rootReducer = (state = initialState, action) => {
   return state;
 };
 
