@@ -1,6 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
+import type { Task, StatusFilter } from "../types/task.ts";
 
-const initialState = {
+export interface RootState {
+  tasks: {
+    items: Task[];
+  }
+  filters: {
+    status: StatusFilter
+  }
+}  
+
+const initialState: RootState = {
   tasks: {
     items: [
       { id: 0, text: "Learn HTML and CSS", completed: true },
@@ -15,7 +25,8 @@ const initialState = {
   },
 };
 
-const rootReducer = (state = initialState, action) => {
+
+const rootReducer = (state: RootState = initialState, action: {type: string}): RootState => {
   return state;
 };
 
