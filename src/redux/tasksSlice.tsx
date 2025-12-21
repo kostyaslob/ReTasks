@@ -14,32 +14,18 @@ const slice = createSlice({
   },
   reducers: {
     addTask: (state, action) => {
-      return {
-        ...state,
-        items: [...state.tasks.items, action.payload],
-      };
+        state.items.push(action.payload)
     },
     deleteTask: (state, action) => {
-      return {
-        ...state,
-          items: state.tasks.items.filter((task) => task.id !== action.payload),
-        
-      };
+        state.items = state.items.filter((task) => task.id !== action.payload)    
     },
     toggleCompleted: (state, action) => {
-      return {
-        ...state,
-          items: state.tasks.items.map((task) => {
-            if (task.id !== action.payload) {
-              return task;
+        for (const task of state.items) {
+            if (task.id === action.payload) {
+                task.completed = !task.completed;
+                break
             }
-            return {
-              ...task,
-              completed: !task.completed,
-            };
-          }),
-
-      };
+        }
     },
   },
 });
