@@ -26,7 +26,7 @@ const initialState: RootState = {
 };
 
 
-const rootReducer = (state: RootState = initialState, action: { type: string }): RootState => {
+const tasksReducer = (state: RootState = initialState.tasks, action: { type: string }): RootState => {
   switch (action.type) {
     case "tasks/addTask": {
       return {
@@ -59,7 +59,14 @@ const rootReducer = (state: RootState = initialState, action: { type: string }):
           })
         }
       }
-    }
+    }  
+    default:
+      return state;
+  };
+}
+
+const filtersReducer = (state: RootState = initialState.filters, action: { type: string }): RootState => {
+  switch (action.type) {
       case "filters/setStatusFilter": 
       return {
         ...state,
@@ -72,6 +79,10 @@ const rootReducer = (state: RootState = initialState, action: { type: string }):
   };
 }
 
+
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    tasks: tasksReducer,
+    filters: filtersReducer,
+  }
 });
