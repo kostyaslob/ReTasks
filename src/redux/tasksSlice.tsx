@@ -11,43 +11,37 @@ const slice = createSlice({
       { id: 3, text: "Discover Redux", completed: false },
       { id: 4, text: "Build amazing apps", completed: false },
     ],
+  },
+  reducers: {
+    addTask: (state, action) => {
+      return {
+        ...state,
+        items: [...state.tasks.items, action.payload],
+      };
     },
-    reducers: {
-        addTask: (state, action) => {
+    deleteTask: (state, action) => {
+      return {
+        ...state,
+          items: state.tasks.items.filter((task) => task.id !== action.payload),
+        
+      };
+    },
+    toggleCompleted: (state, action) => {
+      return {
+        ...state,
+          items: state.tasks.items.map((task) => {
+            if (task.id !== action.payload) {
+              return task;
+            }
             return {
-              ...state,
-              tasks: {
-                items: [...state.tasks.items, action.payload],
-              },
+              ...task,
+              completed: !task.completed,
             };
-        },
-        deleteTask: (state, action) => {
-            return {
-              ...state,
-              tasks: {
-                items: state.tasks.items.filter(
-                  (task) => task.id !== action.payload
-                ),
-              },
-            };
-        },
-        toggleCompleted: (state, action) => {
-            return {
-              ...state,
-              tasks: {
-                items: state.tasks.items.map((task) => {
-                  if (task.id !== action.payload) {
-                    return task;
-                  }
-                  return {
-                    ...task,
-                    completed: !task.completed,
-                  };
-                }),
-              },
-            };
-        }
-   }
+          }),
+
+      };
+    },
+  },
 });
 
 export const { addTask, deleteTask, toggleCompleted } = slice.actions;
