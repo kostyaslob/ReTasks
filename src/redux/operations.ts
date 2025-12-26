@@ -29,3 +29,12 @@ export const deleteTask = createAsyncThunk("tasks/deleteTask", async(taskId, thu
         return thunkAPI.rejectWithValue(error.message)
     }
 })
+
+export const toggleCompleted = createAsyncThunk("tasks/togglCompleted", async (task, thunkAPI) => {
+    try {
+        const response = await axios.put(`/tasks/${task.id}`, { completed: !task.completed });
+        return response.data;
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.message)
+    }
+})
