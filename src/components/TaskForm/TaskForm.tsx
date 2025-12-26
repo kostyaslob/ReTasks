@@ -2,7 +2,7 @@ import type { FormEvent } from "react";
 import Button from "../Button/Button";
 import css from "./TaskForm.module.css";
 import { useDispatch } from "react-redux";
-import { addTask } from "../../redux/actions";
+import { addTask } from "../../redux/operations";
 
 export default function TaskForm() {
   const dispatch = useDispatch();
@@ -10,11 +10,7 @@ export default function TaskForm() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
-    dispatch(addTask({
-      id: crypto.randomUUID(),
-      completed: false,
-      text: form.elements.text.value
-    }))
+    dispatch(addTask(form.elements.text.value));
     form.reset();
   };
 
