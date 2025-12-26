@@ -20,14 +20,11 @@ export default function TaskItem({ task }: TaskItemProps) {
       <input
         type="checkbox"
         className={css.checkbox}
-        onClick={handleToggle}
+        onChange={handleToggle}
         checked={task.completed}
       />
       <p className={css.text}>{task.text}</p>
-      <button
-        type="button"
-        className={css.btn}
-        onClick={handleDelete}>
+      <button type="button" className={css.btn} onClick={handleDelete}>
         <MdClose size={24} />
       </button>
     </div>

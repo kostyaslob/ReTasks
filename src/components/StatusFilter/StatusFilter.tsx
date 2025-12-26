@@ -12,9 +12,24 @@ export default function StatusFilter() {
 
   return (
     <div className={css.wrapper}>
-      <Button onClick={() => handleFilterChange("all")}>All</Button>
-      <Button onClick={() => handleFilterChange("active")}>Active</Button>
-      <Button onClick={() => handleFilterChange("completed")}>Completed</Button>
+      <Button
+        selected={filter === "all"}
+        onClick={() => handleFilterChange("all")}
+      >
+        All
+      </Button>
+      <Button
+        selected={filter === "active"}
+        onClick={() => handleFilterChange("active")}
+      >
+        Active
+      </Button>
+      <Button
+        selected={filter === "completed"}
+        onClick={() => handleFilterChange("completed")}
+      >
+        Completed
+      </Button>
     </div>
   );
 }
