@@ -2,14 +2,14 @@ import Layout from "./Layout/Layout";
 import AppBar from "./AppBar/AppBar";
 import TaskForm from "./TaskForm/TaskForm";
 import TaskList from "./TaskList/TaskList";
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchTasks } from "../redux/operations";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 
 export default function App() {
-    const dispatch = useDispatch();
-    const isLoading = useSelector((state) => state.tasks.isLoading);
-    const error = useSelector((state) => state.tasks.error);
+    const dispatch = useAppDispatch();
+    const isLoading = useAppSelector((state) => state.tasks.isLoading);
+    const error = useAppSelector((state) => state.tasks.error);
 
     useEffect(() => {
         dispatch(fetchTasks())
