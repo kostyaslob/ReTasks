@@ -1,11 +1,12 @@
-import { useSelector } from "react-redux";
 import css from "./TaskCounter.module.css";
+import { useAppSelector } from "../../redux/hooks";
+import type { Task } from "../../types/task";
 
 export default function TaskCounter() {
-  const tasks = useSelector((state) => state.tasks.items);
+  const tasks = useAppSelector((state) => state.tasks.items);
 
   const count = tasks.reduce(
-    (acc, task) => {
+    (acc: { active: number; completed: number }, task: Task) => {
       if (task.completed) {
         acc.completed += 1;
       } else {
@@ -13,8 +14,8 @@ export default function TaskCounter() {
       }
       return acc;
     },
-    {active: 0, completed: 0}
-  )
+    { active: 0, completed: 0 }
+  );
     return (
       <div>
         <p className={css.text}>Active: {count.active}</p>

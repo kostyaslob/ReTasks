@@ -1,14 +1,16 @@
-import { useDispatch, useSelector } from "react-redux";
 import Button from "../Button/Button";
 import css from "./StatusFilter.module.css";
-import type { RootState } from "../../redux/store";
 import { setStatusFilter } from "../../redux/filtersSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import type { StatusFilter } from "../../types/task";
 
 export default function StatusFilter() {
-  const dispatch = useDispatch();
-  const filter = useSelector((state: RootState) => state.filters.status);
+  const dispatch = useAppDispatch();
+  const filter = useAppSelector((state) => state.filters.status);
 
-  const handleFilterChange = (filter) => dispatch(setStatusFilter(filter))
+  const handleFilterChange = (filter: StatusFilter) => {
+    dispatch(setStatusFilter(filter));
+  };
 
   return (
     <div className={css.wrapper}>
