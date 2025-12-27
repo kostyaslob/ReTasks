@@ -1,8 +1,7 @@
 import css from "./TaskList.module.css";
 import TaskItem from "./TaskItem/TaskItem"
-import { useSelector } from "react-redux";
 import type { Task, StatusFilter } from "../../types/task";
-import type { RootState } from "../../redux/store";
+import { useAppSelector } from "../../redux/hooks";
 
 
 
@@ -18,8 +17,8 @@ const getVisibleTasks = (tasks: Task[], statusFilter: StatusFilter) => {
 };
 
 export default function TaskList() {
-  const tasks = useSelector((state: RootState) => state.tasks.items);
-  const statusFilter = useSelector((state: RootState) => state.filters.status);
+  const tasks = useAppSelector((state) => state.tasks.items);
+  const statusFilter = useAppSelector((state) => state.filters.status);
   const visibleTasks = getVisibleTasks(tasks, statusFilter);
 
   return (
