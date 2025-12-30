@@ -5,3 +5,8 @@ export interface Task {
 }
 
 export type StatusFilter = "all" | "active" | "completed";
+
+export interface User {
+    name: string | null;
+    email: string | null;
+}
