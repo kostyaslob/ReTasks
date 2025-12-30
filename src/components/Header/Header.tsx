@@ -1,9 +1,9 @@
 import css from "./Header.module.css";
 import Navigation from "../Navigation/Navigation";  
 import UserMenu from "../UserMenu/UserMenu";
-import AuthNav from "../AuthMenu/AuthNav";
+import AuthNav from "../AuthNav/AuthNav";
 
-export default function Layout() {
+export default function Header() {
     return (
         <header className={css.header}>
             <Navigation />

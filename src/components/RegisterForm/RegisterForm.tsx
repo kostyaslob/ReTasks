@@ -1,5 +1,5 @@
-import css from "./RegisterForm.module.css";
+// import css from "./RegisterForm.module.css";
 
 export default function RegisterForm() {
-    return 
+    return <p>RegisterForm</p>;
 }

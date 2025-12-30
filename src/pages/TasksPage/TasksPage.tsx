@@ -1,6 +1,6 @@
-import {AppBar} from "../../components/AppBar/AppBar";
-import { TaskForm } from "../../components/TaskForm/TaskForm";
-import { TaskList } from "../../components/TaskList/TaskList";
+import AppBar from "../../components/AppBar/AppBar";
+import TaskForm  from "../../components/TaskForm/TaskForm";
+import TaskList from "../../components/TaskList/TaskList";
 
 export default function TasksPage() {
   return (
@@ -8,7 +8,7 @@ export default function TasksPage() {
       <title>Your tasks</title>
       <AppBar />
       <TaskForm />
-      {isLoading && !error && <b>Request in progress...</b>}
+      {/* {isLoading && !error && <b>Request in progress...</b>} */}
       <TaskList />
     </>
   );
