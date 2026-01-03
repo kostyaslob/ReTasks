@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { User } from "../../types/task";
-import { register } from "./operations";
+import { logIn, register } from "./operations";
 
 interface AuthState {
     user: User | null;
@@ -29,9 +29,20 @@ const authSlice = createSlice({
             .addCase(register.fulfilled, (state, action) => {
                 state.user = action.payload.user;
                 state.token = action.payload.token;
-                state.isLoggedIn = true;
+                state.isLoggedIn = true; 
             }) 
             .addCase(register.rejected, (state, action) => {
+
+            })
+            .addCase(logIn.pending, (state, action) => {
+
+            })
+            .addCase(logIn.fulfilled, (state, action) => {
+                state.user = action.payload.user;
+                state.token = action.payload.token;
+                state.isLoggedIn = true; 
+            }) 
+            .addCase(logIn.rejected, (state, action) => {
 
             }) 
     }
