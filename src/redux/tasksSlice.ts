@@ -1,6 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { addTask, deleteTask, fetchTasks, toggleCompleted } from "./operations";
 import type { Task } from "../types/task";
+import { logOut } from "./auth/operations";
 
 interface TasksState {
   items: Task[];
@@ -53,7 +54,12 @@ const tasksSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.items = state.items.map((task) => task.id === action.payload.id ? action.payload : task)
-    }).addCase(toggleCompleted.rejected, handleRejected)
+      })
+      .addCase(toggleCompleted.rejected, handleRejected)
+      .addCase(logOut.fulfilled, (state) => {
+        state.items = [];
+        state.error = null;
+      })
   },
 });
 

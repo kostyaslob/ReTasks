@@ -16,5 +16,6 @@ export const logIn = createAsyncThunk("auth/login", async (values) => {
 })
 
 export const logOut = createAsyncThunk("auth/logout", async () => {
-    
+    await axios.post("/users/logout");
+    axios.defaults.headers.common.Authorization = "";
 })

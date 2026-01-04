@@ -6,7 +6,7 @@ export const fetchTasks = createAsyncThunk<
     Task[],
     void,
     {rejectValue: string}
->("tasks/fetchAll", async (_, thunkAPI) => {
+>("tasks/fetchTasks", async (_, thunkAPI) => {
     try {
         const response = await axios.get<Task[]>("/tasks");
         return response.data;
