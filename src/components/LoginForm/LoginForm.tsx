@@ -25,7 +25,7 @@ export default function LoginForm() {
         </label>
         <label className={css.label}>
           Password
-          <Field type="text" name="password" />
+          <Field type="password" name="password" />
         </label>
         <button type="submit">Log In</button>
       </Form>
