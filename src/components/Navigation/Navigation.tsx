@@ -13,9 +13,14 @@ export default function Navigation() {
           Home
         </NavLink>
         {isLoggedIn && (
-          <NavLink className={css.link} to="/tasks">
-            Tasks
-          </NavLink>
+          <>
+            <NavLink className={css.link} to="/tasks">
+              Tasks
+            </NavLink>
+            <NavLink className={css.link} to="/profile">
+              Profile
+            </NavLink>
+          </>
         )}
       </nav>
     );
