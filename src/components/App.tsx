@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "../redux/auth/operations";
 import { selectIsRefreshing } from "../redux/auth/selectors";
 import RestrictedRoute from "./RestrictedRoute";
+import PrivateRoute from "./PrivateRoute";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -36,7 +37,10 @@ export default function App() {
             <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
           }
         />
-        <Route path="tasks" element={<TasksPage />} />
+        <Route
+          path="tasks"
+          element={<PrivateRoute redirectTo="/login" component={<TasksPage />} />}
+        />
       </Route>
     </Routes>
   );
